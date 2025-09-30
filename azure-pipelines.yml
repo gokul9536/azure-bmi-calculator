@@ -2,9 +2,9 @@ trigger:
   - main
 
 pool:
-  name: DOE1
+  name: bmi-calculator-agent-pool
   demands:
-    - agent.name -equals DOE1
+    - agent.name -equals bmi-calculator-agent
 
 steps:
   - task: Maven@4
@@ -14,7 +14,6 @@ steps:
       javaHomeOption: 'Path'
       jdkDirectory: 'C:\Program Files\Java\jdk-21'
       mavenVersionOption: 'Default'
-      publishJUnitResults: true
 
   - task: PublishPipelineArtifact@1
     displayName: 'Publish build artifact'
