@@ -1,0 +1,24 @@
+trigger:
+  - main
+
+pool:
+  name: DOE1
+  demands:
+    - agent.name -equals DOE1
+
+steps:
+  - task: Maven@4
+    inputs:
+      mavenPomFile: 'pom.xml'
+      goals: 'clean install'
+      javaHomeOption: 'Path'
+      jdkDirectory: 'C:\Program Files\Java\jdk-21'
+      mavenVersionOption: 'Default'
+      publishJUnitResults: true
+
+  - task: PublishPipelineArtifact@1
+    displayName: 'Publish build artifact'
+    inputs:
+      targetPath: '$(System.DefaultWorkingDirectory)/target'
+      artifact: 'maven-build'
+      publishLocation: 'pipeline'
