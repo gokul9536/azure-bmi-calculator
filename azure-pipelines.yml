@@ -2,9 +2,9 @@ trigger:
   - main
 
 pool:
-  name: bmi-calculator-agent-pool-1
+  name: bmi-calculator-agent-pool-3
   demands:
-    - agent.name -equals bmi-calculator-agent-1
+    - agent.name -equals bmi-calculator-agent-3
 
 steps:
   - task: Maven@4
